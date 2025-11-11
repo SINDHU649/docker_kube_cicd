@@ -49,7 +49,7 @@ pipeline {
             }
             steps {
                 echo "Stopping and removing containers and volumes..."
-                sh "docker-compose -f ${DOCKER_COMPOSE_FILE} down -v"
+                sh "sudo docker-compose -f ${DOCKER_COMPOSE_FILE} down -v"
             }
         }
         stage('Cleanup Old Images') {
@@ -61,7 +61,7 @@ pipeline {
             }
             steps {
                 echo "Cleaning up old Docker images..."
-                sh "docker image prune -af"
+                sh "sudo docker image prune -af"
             }
         }
         // stage('Build the Docker images') {
